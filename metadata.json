@@ -1,0 +1,6 @@
+{
+  "name": "Digital Hospital Agent",
+  "description": "NHS Digital Hospital Agent featuring role-based portals for Clinical Staff, Hospital Operations & Admins, and Patients, with live triage, ward metrics, and AI health indicators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

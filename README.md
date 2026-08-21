@@ -1,82 +1,20 @@
-# NHS-Hospital-AI-Agent
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-## Project Overview
+# Run and deploy your AI Studio app
 
-The NHS Digital Hospital Agent is an end-to-end AI-powered hospital platform designed to support patients, clinical staff, and hospital administration.
+This contains everything you need to run your app locally.
 
-### Key Features
+View your app in AI Studio: https://ai.studio/apps/4f5cc374-7638-4eb3-9aec-df49c202fea1
 
-- Patient symptom triage
-- Appointment booking
-- Patient-facing chatbot and Q&A
-- Clinical note summarization
-- Discharge letter assistance
-- Patient record lookup
-- Hospital scheduling and resource allocation
-- Hospital analytics and dashboards
+## Run Locally
 
-## Project Domains
+**Prerequisites:**  Node.js
 
-- Python
-- Data Science
-- Data Analytics
-- Full Stack Development
-- AI/ML
-- Generative AI
 
-## AI/ML Module
-
-The AI/ML module focuses on developing and evaluating machine learning models for hospital-related use cases.
-
-### ML Workflow
-
-Dataset
-↓
-Data Cleaning
-↓
-Categorical Encoding
-↓
-Train/Test Split
-↓
-Logistic Regression
-↓
-Decision Tree
-↓
-Random Forest
-↓
-XGBoost
-↓
-Model Comparison
-↓
-Best Model Selection
-
-### AI/ML Tasks
-
-- Dataset research and analysis
-- Exploratory Data Analysis (EDA)
-- Data quality assessment
-- Data preprocessing
-- Feature selection
-- Model development
-- Model evaluation
-- Model comparison
-- Explainability
-- Bias and fairness evaluation
-
-## Repository Structure
-
-```text
-NHS-Digital-Hospital-Agent/
-│
-├── backend/
-├── frontend/
-├── ai_ml/
-├── gen_ai/
-├── data/
-├── fhir/
-├── analytics/
-├── tests/
-├── docs/
-├── .env.example
-├── .gitignore
-└── README.md
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
