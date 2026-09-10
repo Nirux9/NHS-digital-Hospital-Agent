@@ -1,0 +1,22 @@
+Rules learned from the synthetic dataset.
+Disclaimer: These decision rules are extracted for model interpretability on synthetic data only and must not be described as validated medical guidelines.
+
+|--- spo2 <= 95.50
+|   |--- spo2 <= 92.50
+|   |   |--- spo2 <= 85.50
+|   |   |   |--- class: 1
+|   |   |--- spo2 >  85.50
+|   |   |   |--- class: 2
+|   |--- spo2 >  92.50
+|   |   |--- heart_rate <= 115.50
+|   |   |   |--- class: 3
+|   |   |--- heart_rate >  115.50
+|   |   |   |--- class: 2
+|--- spo2 >  95.50
+|   |--- heart_rate <= 97.50
+|   |   |--- heart_rate <= 78.50
+|   |   |   |--- class: 5
+|   |   |--- heart_rate >  78.50
+|   |   |   |--- class: 4
+|   |--- heart_rate >  97.50
+|   |   |--- class: 3

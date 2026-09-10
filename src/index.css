@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+
+  /* NHS Premium Blue Color System */
+  --primary-blue: #005EB8;
+  --primary-blue-dark: #003087;
+  --primary-blue-light: #EEF6FF;
+  --navy: #0B1F3A;
+  --background: #F3F6FA;
+  --card: #FFFFFF;
+  --border: #DFE8F2;
+  --text-primary: #0B1F3A;
+  --text-secondary: #64748B;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F3F6FA;
+  color: #0B1F3A;
+  font-family: 'Public Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F3F6FA;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #005EB8;
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Print styles for clinical records */
+@media print {
+  body {
+    background: #FFFFFF;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

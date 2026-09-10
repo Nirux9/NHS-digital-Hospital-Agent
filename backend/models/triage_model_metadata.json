@@ -1,0 +1,111 @@
+{
+  "model_name": "NHS Emergency Severity Triage LightGBM Predictor",
+  "model_version": "1.0.0",
+  "training_dataset": "synthetic_triage_data_250k.csv",
+  "dataset_size": 250000,
+  "target_column": "true_severity",
+  "feature_names": [
+    "age",
+    "heart_rate",
+    "systolic_bp",
+    "respiratory_rate",
+    "spo2",
+    "temperature_c",
+    "consciousness",
+    "pain_score",
+    "chest_pain",
+    "breathing_difficulty",
+    "active_bleeding",
+    "chief_complaint"
+  ],
+  "categorical_features": [
+    "consciousness",
+    "chief_complaint"
+  ],
+  "train_ratio": 0.7,
+  "test_ratio": 0.3,
+  "random_state": 42,
+  "training_timestamp": "2026-08-22T15:27:44.105022Z",
+  "accuracy_note": "100% accuracy was obtained on the synthetic hold-out test set. This reflects the deterministic structure of the synthetic dataset and must not be interpreted as real-world clinical validation.",
+  "metrics": {
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0,
+    "f1_weighted": 1.0,
+    "per_class": {
+      "CRITICAL": {
+        "level": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 2100
+      },
+      "EMERGENT": {
+        "level": 2,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 10050
+      },
+      "URGENT": {
+        "level": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 25575
+      },
+      "LESS_URGENT": {
+        "level": 4,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 24375
+      },
+      "NON_URGENT": {
+        "level": 5,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 12900
+      }
+    },
+    "confusion_matrix": [
+      [
+        2100,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        10050,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        25575,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        24375,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        12900
+      ]
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admissions {
+  admission_id     Int       @id @default(autoincrement())
+  patient_id       Int
+  doctor_id        Int?
+  ward_id          Int?
+  bed_id           Int?
+  admission_date   DateTime? @default(now()) @db.Timestamp(6)
+  discharge_date   DateTime? @db.Timestamp(6)
+  admission_reason String?
+  status           String?   @default("Admitted") @db.VarChar(30)
+  beds             beds?     @relation(fields: [bed_id], references: [bed_id], onDelete: NoAction, onUpdate: NoAction)
+  doctors          doctors?  @relation(fields: [doctor_id], references: [doctor_id], onDelete: NoAction, onUpdate: NoAction)
+  patients         patients  @relation(fields: [patient_id], references: [patient_id], onDelete: NoAction, onUpdate: NoAction)
+  wards            wards?    @relation(fields: [ward_id], references: [ward_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model beds {
+  bed_id     Int          @id @default(autoincrement())
+  bed_number String       @db.VarChar(20)
+  ward_id    Int?
+  status     String?      @default("Available") @db.VarChar(30)
+  admissions admissions[]
+  wards      wards?       @relation(fields: [ward_id], references: [ward_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model departments {
+  department_id   Int       @id @default(autoincrement())
+  department_name String    @db.VarChar(100)
+  description     String?
+  doctors         doctors[]
+  services        services[]
+}
+
+model doctors {
+  doctor_id      Int          @id @default(autoincrement())
+  doctor_name    String       @db.VarChar(100)
+  specialization String?      @db.VarChar(100)
+  department_id  Int?
+  phone          String?      @db.VarChar(20)
+  email          String?      @db.VarChar(150)
+  admissions     admissions[]
+  departments    departments? @relation(fields: [department_id], references: [department_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model patients {
+  patient_id    Int          @id @default(autoincrement())
+  patient_code  String       @unique @db.VarChar(20)
+  first_name    String       @db.VarChar(50)
+  last_name     String?      @db.VarChar(50)
+  date_of_birth DateTime?    @db.Date
+  gender        String?      @db.VarChar(20)
+  phone         String?      @db.VarChar(20)
+  address       String?
+  blood_group   String?      @db.VarChar(10)
+  created_at    DateTime?    @default(now()) @db.Timestamp(6)
+  admissions    admissions[]
+}
+
+model wards {
+  ward_id    Int          @id @default(autoincrement())
+  ward_name  String       @db.VarChar(100)
+  ward_type  String?      @db.VarChar(50)
+  floor      Int?
+  admissions admissions[]
+  beds       beds[]
+}
+
+model facilities {
+  id                 Int        @id @default(autoincrement())
+  name               String     @db.VarChar(150)
+  type               String?    @db.VarChar(50)
+  category           String     @db.VarChar(50)
+  description        String?
+  location           String     @db.VarChar(150)
+  floor              String?    @db.VarChar(50)
+  contact_phone      String?    @db.VarChar(50)
+  email              String?    @db.VarChar(150)
+  opening_hours      String     @db.VarChar(100)
+  status             String     @default("OPEN") @db.VarChar(50)
+  accessibility_info String?
+  is_staff_only      Boolean    @default(false)
+  created_at         DateTime?  @default(now()) @db.Timestamp(6)
+  updated_at         DateTime?  @default(now()) @updatedAt @db.Timestamp(6)
+  services           services[]
+}
+
+model services {
+  id             Int         @id @default(autoincrement())
+  name           String      @db.VarChar(150)
+  description    String?
+  category       String      @db.VarChar(50)
+  department_id  Int?
+  facility_id    Int?
+  location       String?     @db.VarChar(150)
+  opening_hours  String      @default("Open 24 hours") @db.VarChar(100)
+  status         String      @default("OPEN") @db.VarChar(50)
+  contact_phone  String?     @db.VarChar(50)
+  is_staff_only  Boolean     @default(false)
+  created_at     DateTime?   @default(now()) @db.Timestamp(6)
+  updated_at     DateTime?   @default(now()) @updatedAt @db.Timestamp(6)
+  departments    departments? @relation(fields: [department_id], references: [department_id], onDelete: SetNull, onUpdate: NoAction)
+  facilities     facilities?  @relation(fields: [facility_id], references: [id], onDelete: SetNull, onUpdate: NoAction)
+}
+

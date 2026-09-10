@@ -1,0 +1,13 @@
+feature,importance,rank
+heart_rate,3708,1
+spo2,3363,2
+systolic_bp,3182,3
+pain_score,2879,4
+temperature_c,2869,5
+respiratory_rate,2847,6
+age,2157,7
+chief_complaint,537,8
+active_bleeding,349,9
+breathing_difficulty,332,10
+chest_pain,162,11
+consciousness,9,12
